@@ -26,4 +26,8 @@ public class StudentService {
     public List<Student> getStudent(String gender) {
         return this.studentRepository.getStudent(gender);
     }
+
+    public Student getStudentById(Integer id) {
+        return this.studentRepository.getStudentById(id);
+    }
 }

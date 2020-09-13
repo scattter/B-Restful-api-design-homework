@@ -40,4 +40,8 @@ public class StudentRepository {
     public List<Student> getStudent(String gender) {
         return "".equals(gender) ? students : students.stream().filter(it -> it.getGender().equals(gender)).collect(Collectors.toList());
     }
+
+    public Student getStudentById(Integer id) {
+        return students.stream().filter(it -> it.getStudentId().equals(id)).collect(Collectors.toList()).get(0);
+    }
 }

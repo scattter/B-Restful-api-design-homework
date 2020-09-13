@@ -30,4 +30,9 @@ public class StudentController {
         return this.studentService.getStudent(gender);
     }
 
+    @GetMapping("/student/{studentId}")
+    public Student getStudentById(@PathVariable Integer studentId) {
+        return this.studentService.getStudentById(studentId);
+    }
+
 }
