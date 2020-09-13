@@ -27,7 +27,12 @@ public class StudentController {
 
     @GetMapping("/{gender}")
     public List<Student> getStudentByGender(@PathVariable(required = false) String gender) {
-        return this.studentService.getStudent(gender);
+        return this.studentService.getStudentByGender(gender);
+    }
+
+    @GetMapping("")
+    public List<Student> getStudent() {
+        return this.studentService.getStudents();
     }
 
     @GetMapping("/student/{studentId}")

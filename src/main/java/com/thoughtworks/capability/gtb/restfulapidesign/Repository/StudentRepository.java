@@ -25,33 +25,8 @@ public class StudentRepository {
         students.add(new Student(8, "廖燊", "male", "good"));
     }
 
-    public void addStudent(Student student) {
-        students.add(student);
-    }
-
     public List<Student> getStudents() {
         return students;
     }
 
-    public void deleteStudent(Integer id) {
-        students.removeIf(it -> it.getStudentId().equals(id));
-    }
-
-    public List<Student> getStudentByGender(String gender) {
-        return "".equals(gender) ? students : students.stream().filter(it -> it.getGender().equals(gender)).collect(Collectors.toList());
-    }
-
-    public Student getStudentById(Integer id) {
-        return students.stream().filter(it -> it.getStudentId().equals(id)).collect(Collectors.toList()).get(0);
-    }
-
-    public void updateStudentInfo(Student student) {
-        students.forEach(it -> {
-            if(it.getStudentId().equals(student.getStudentId())){
-                it.setStudentName(student.getStudentName());
-                it.setGender(student.getGender());
-                it.setStudentNotes(student.getStudentNotes());
-            }
-        });
-    }
 }
