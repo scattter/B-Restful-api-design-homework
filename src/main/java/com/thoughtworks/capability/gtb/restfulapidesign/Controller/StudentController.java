@@ -35,4 +35,9 @@ public class StudentController {
         return this.studentService.getStudentById(studentId);
     }
 
+    @PutMapping("/update/{studentId}")
+    public void updateStudentInfo(@RequestBody Student student){
+        this.studentService.updateStudentInfo(student);
+    }
+
 }

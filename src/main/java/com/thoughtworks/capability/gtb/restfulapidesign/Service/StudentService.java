@@ -30,4 +30,8 @@ public class StudentService {
     public Student getStudentById(Integer id) {
         return this.studentRepository.getStudentById(id);
     }
+
+    public void updateStudentInfo(Student student) {
+        this.studentRepository.updateStudentInfo(student);
+    }
 }

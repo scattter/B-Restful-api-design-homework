@@ -44,4 +44,14 @@ public class StudentRepository {
     public Student getStudentById(Integer id) {
         return students.stream().filter(it -> it.getStudentId().equals(id)).collect(Collectors.toList()).get(0);
     }
+
+    public void updateStudentInfo(Student student) {
+        students.forEach(it -> {
+            if(it.getStudentId().equals(student.getStudentId())){
+                it.setStudentName(student.getStudentName());
+                it.setGender(student.getGender());
+                it.setStudentNotes(student.getStudentNotes());
+            }
+        });
+    }
 }
