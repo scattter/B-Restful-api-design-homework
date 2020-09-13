@@ -17,7 +17,7 @@ public class GroupService {
     private final int GROUP_NUM = 6;
     private final GroupRepository groupRepository;
     private final StudentRepository studentRepository;
-    Map<Group, List<Student>> randomGroups = new HashMap<>();
+
 
     public GroupService(GroupRepository groupRepository, StudentRepository studentRepository) {
         this.groupRepository = groupRepository;
@@ -25,22 +25,25 @@ public class GroupService {
     }
 
     public Map<Group, List<Student>> splitGroup() {
+        Map<Group, List<Student>> randomGroups = new HashMap<>();
         List<Student> studentsList = studentRepository.getStudents();
         int surplus = studentsList.size() % GROUP_NUM;
         int eachGroupBaseNum = studentsList.size() / GROUP_NUM;
+        int startIndex = 0;
 
         Collections.shuffle(studentsList);
         for (int i = 0; i < GROUP_NUM; i++) {
-            int groupSize = randomGroups.size();
-            eachGroupBaseNum = surplus > 0 ? eachGroupBaseNum + 1 : eachGroupBaseNum;
-            randomGroups.put(new Group(i + 1, "Team" + "-" + (i + 1), ""), studentsList.subList(groupSize, groupSize + eachGroupBaseNum));
+            int currentAddNum = surplus > 0 ? eachGroupBaseNum + 1 : eachGroupBaseNum;
+            randomGroups.put(new Group(i + 1, "Team" + "-" + (i + 1), ""), studentsList.subList(startIndex, (startIndex + currentAddNum)));
+            startIndex += currentAddNum;
             surplus--;
         }
-        return randomGroups;
+        groupRepository.save(randomGroups);
+        return groupRepository.getGroups();
     }
 
     public void updateGroupName(Integer groupId, String groupName) {
-        randomGroups.forEach((group, lst) -> {
+        groupRepository.getGroups().forEach((group, lst) -> {
             if (group.getGroupId().equals(groupId)) {
                 group.setGroupName(groupName);
             }
@@ -48,6 +51,6 @@ public class GroupService {
     }
 
     public Map<Group, List<Student>> getGroup() {
-        return randomGroups;
+        return this.groupRepository.getGroups();
     }
 }

@@ -10,4 +10,12 @@ import java.util.Map;
 @Repository
 public class GroupRepository {
     private Map<Group, List<Student>> groups;
+
+    public void save(Map<Group, List<Student>> randomGroups) {
+        this.groups = randomGroups;
+    }
+
+    public Map<Group, List<Student>> getGroups() {
+        return groups;
+    }
 }
