@@ -36,7 +36,7 @@ public class StudentController {
     }
 
     @PutMapping("/update/{studentId}")
-    public void updateStudentInfo(@RequestBody Student student){
+    public void updateStudentInfo(@RequestBody Student student) {
         this.studentService.updateStudentInfo(student);
     }
 
