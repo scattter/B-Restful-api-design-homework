@@ -26,7 +26,7 @@ public class StudentController {
     }
 
     @GetMapping("/{gender}")
-    public List<Student> getStudent(@PathVariable(required = false) String gender) {
+    public List<Student> getStudentByGender(@PathVariable(required = false) String gender) {
         return this.studentService.getStudent(gender);
     }
 

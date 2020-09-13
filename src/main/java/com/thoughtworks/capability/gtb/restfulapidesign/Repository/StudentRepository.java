@@ -29,15 +29,15 @@ public class StudentRepository {
         students.add(student);
     }
 
-    public Integer getStudentsLength() {
-        return students.size();
+    public List<Student> getStudents() {
+        return students;
     }
 
     public void deleteStudent(Integer id) {
         students.removeIf(it -> it.getStudentId().equals(id));
     }
 
-    public List<Student> getStudent(String gender) {
+    public List<Student> getStudentByGender(String gender) {
         return "".equals(gender) ? students : students.stream().filter(it -> it.getGender().equals(gender)).collect(Collectors.toList());
     }
 
