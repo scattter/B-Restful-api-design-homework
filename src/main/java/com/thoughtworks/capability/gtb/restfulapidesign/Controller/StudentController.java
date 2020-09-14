@@ -20,7 +20,7 @@ public class StudentController {
         this.studentService.addStudent(student);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}/delete")
     public void deleteStudent(@PathVariable Integer id) {
         this.studentService.deleteStudent(id);
     }
@@ -40,7 +40,7 @@ public class StudentController {
         return this.studentService.getStudentById(studentId);
     }
 
-    @PutMapping("/update/{studentId}")
+    @PutMapping("/{studentId}/update")
     public void updateStudentInfo(@RequestBody Student student) {
         this.studentService.updateStudentInfo(student);
     }

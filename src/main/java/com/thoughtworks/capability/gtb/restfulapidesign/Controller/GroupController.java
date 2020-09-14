@@ -23,7 +23,7 @@ public class GroupController {
         return this.groupService.splitGroup();
     }
 
-    @PutMapping("/update/{groupId}")
+    @PutMapping("/{groupId}/update")
     public void updateGroupName(@PathVariable Integer groupId,
                                 @RequestBody String groupName) {
         this.groupService.updateGroupName(groupId, groupName);
